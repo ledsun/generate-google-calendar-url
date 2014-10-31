@@ -1,0 +1,23 @@
+{
+  "name": "generate-google-calendar-url",
+  "version": "0.0.1",
+  "description": "Google Calendarに予定を追加するurlを生成します。",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/generate-google-calendar-url.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ledsun/generate-google-calendar-url.git"
+  },
+  "keywords": [
+    "google",
+    "calendar"
+  ],
+  "author": "ledsun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ledsun/generate-google-calendar-url/issues"
+  },
+  "homepage": "https://github.com/ledsun/generate-google-calendar-url"
+}
