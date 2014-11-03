@@ -27,6 +27,18 @@ http://www.google.com/calendar/event?action=TEMPLATE&text=%E6%96%B0%E3%81%97%E3%
 npm install git@github.com:ledsun/generate-google-calendar-url.git
 ```
 
+## Parameters
+### Supported
+- text
+- dates
+- location
+- details
+
+### Unsupported
+- trp
+- sprop
+
+
 ## Contributing
 
 contributeしたいっすか？まじやべっすー！
