@@ -51,7 +51,14 @@ contributeしたいっすか？まじやべっすー！
 1. Enjoy a refreshing Redbull and wait
 
 ### Testing
+Node.jsで実行する場合
 ```
 npm install
 npm test
+```
+
+ブラウザで実行する場合
+```
+npm install
+open test/index.html 
 ```

@@ -2,9 +2,9 @@
   "name": "generate-google-calendar-url",
   "version": "0.0.1",
   "description": "Google Calendarに予定を追加するurlを生成します。",
-  "main": "index.js",
   "scripts": {
-    "test": "mocha enable-power-assert.js test/generate-google-calendar-url.js"
+    "test": "mocha enable-power-assert.js test/generate-google-calendar-url.js",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ledsun/generate-google-calendar-url",
   "devDependencies": {
+    "bower": "^1.3.12",
     "espower-loader": "^0.9.1",
     "power-assert": "^0.9.1"
   }
