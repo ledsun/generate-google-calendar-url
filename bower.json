@@ -18,7 +18,10 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "package.json",
+    "enable-power-assert.js"
+
   ],
   "devDependencies": {
     "expect": "~0.3.1",

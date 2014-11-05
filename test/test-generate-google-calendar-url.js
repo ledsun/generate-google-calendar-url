@@ -4,7 +4,7 @@ describe('generate url', function() {
   var generateUrl;
 
   before(function(done) {
-    generateUrl = require('../lib/generate-google-calendar-url');
+    generateUrl = require('../generate-google-calendar-url');
     done();
   });
 
