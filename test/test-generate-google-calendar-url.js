@@ -28,6 +28,20 @@ describe('generate url', function() {
     })
   })
 
+  describe('given date parameter', function() {
+    it('as all day', function() {
+      assert.equal(generateUrl({
+        date: '2014/11/07'
+      }), BASE_URL + '&dates=20141107/20141108')
+    })
+
+    it('as invaid date', function() {
+      assert.equal(generateUrl({
+        date: '2014/11/31'
+      }), BASE_URL)
+    })
+  })
+
   describe('given location parameter', function() {
     it('as multi byte', function() {
       assert.equal(generateUrl({

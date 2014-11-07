@@ -48,7 +48,8 @@ bower install git://github.com/ledsun/generate-google-calendar-url.git
 
 htmlにscriptタグを埋め込みます。
 ```html
-<script src="bower_components/generate-google-calendar-url"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/generate-google-calendar-url/generate-google-calendar-url.js"></script>
 <script>
 console.log(generateUrl({
   start: new Date(2014, 11, 15, 10),

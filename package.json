@@ -24,5 +24,8 @@
     "espower-loader": "^0.9.1",
     "power-assert": "^0.9.1"
   },
-  "main": "generate-google-calendar-url.js"
+  "main": "generate-google-calendar-url.js",
+  "dependencies": {
+    "moment": "^2.8.3"
+  }
 }

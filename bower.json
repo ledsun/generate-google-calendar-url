@@ -21,12 +21,14 @@
     "tests",
     "package.json",
     "enable-power-assert.js"
-
   ],
   "devDependencies": {
     "expect": "~0.3.1",
     "jquery": "~2.1.1",
     "mocha": "~2.0.1",
     "power-assert": "~0.9.1"
+  },
+  "dependencies": {
+    "moment": "~2.8.3"
   }
 }
