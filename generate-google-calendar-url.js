@@ -1,5 +1,4 @@
-;
-! function(undefined) {
+(function() {
   var BASE_URL = 'http://www.google.com/calendar/event?action=TEMPLATE',
     toParameter = function(options, propertyName, alternativeName) {
       if (!options[propertyName]) return '';
@@ -23,4 +22,4 @@
     // Browser global.
     window.generateUrl = generateUrl;
   }
-}();
+})();
