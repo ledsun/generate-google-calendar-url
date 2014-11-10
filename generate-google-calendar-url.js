@@ -12,13 +12,26 @@
     toMoment = function(options) {
       return moment(moment(options.date, 'YYYY/MM/DD'));
     },
-    toDates = function(options) {
+    toAllDay = function(options) {
       if (!options.date) return '';
 
       var moment = toMoment(options);
 
       return moment.isValid() ?
         '&dates=' + moment.format('YYYYMMDD') + '/' + moment.add(1, 'd').format('YYYYMMDD') :
+        '';
+    },
+    toIsoHour = function(date) {
+      return moment(date).utc().format("YYYYMMDDTHHmmss") + "Z";
+    },
+    toHour = function(options) {
+      if (!(options.start instanceof Date) || !(options.end instanceof Date)) return '';
+
+      return '&dates=' + toIsoHour(options.start) + '/' + toIsoHour(options.end);
+    },
+    toDates = function(options) {
+      return options.start && options.end ? toHour(options) :
+        options.date ? toAllDay(options) :
         '';
     },
     generateUrl = function(options) {

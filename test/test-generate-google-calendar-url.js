@@ -7,11 +7,22 @@ describe('generate url', function() {
     assert.equal(generateUrl(), BASE_URL)
   })
 
-  it('given two parameters, work well', function() {
-    assert.equal(generateUrl({
-      title: 'new event',
-      location: 'somewhere'
-    }), BASE_URL + '&text=new%20event&location=somewhere')
+  describe('given multi parameters', function() {
+    it('as title and location, work well', function() {
+      assert.equal(generateUrl({
+        title: 'new event',
+        location: 'somewhere'
+      }), BASE_URL + '&text=new%20event&location=somewhere')
+    })
+
+    it('as date and start and end, prefer start and end', function() {
+      assert.equal(generateUrl({
+        date: '2014/11/07',
+        start: new Date(2014, 10, 10, 12),
+        end: new Date(2014, 10, 10, 14)
+      }), BASE_URL + '&dates=20141110T030000Z/20141110T050000Z')
+
+    })
   })
 
   describe('given title parameter, encode to "text" as url-encode', function() {
@@ -44,6 +55,34 @@ describe('generate url', function() {
     it('as invaid date, ignore', function() {
       assert.equal(generateUrl({
         date: '2014/11/31'
+      }), BASE_URL)
+    })
+  })
+
+  describe('given start and end parameter, encode to "dates"', function() {
+    it('as two hours', function() {
+      assert.equal(generateUrl({
+        start: new Date(2014, 10, 10, 12),
+        end: new Date(2014, 10, 10, 14)
+      }), BASE_URL + '&dates=20141110T030000Z/20141110T050000Z')
+    })
+
+    it('as only start, ignore', function() {
+      assert.equal(generateUrl({
+        start: new Date
+      }), BASE_URL)
+    })
+
+    it('as only end, ignore', function() {
+      assert.equal(generateUrl({
+        start: new Date
+      }), BASE_URL)
+    })
+
+    it('as not date, ignore', function() {
+      assert.equal(generateUrl({
+        start: 'a',
+        end: {}
       }), BASE_URL)
     })
   })

@@ -6,3 +6,5 @@ before_install:
   - "npm install -g mocha"
 script:
   - "npm test"
+env:
+  - TZ=Asia/Tokyo
