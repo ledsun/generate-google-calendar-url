@@ -1,6 +1,7 @@
 var assert = require('power-assert'),
   generateUrl = require('../generate-google-calendar-url'),
-  BASE_URL = 'http://www.google.com/calendar/event?action=TEMPLATE';
+  BASE_URL = 'http://www.google.com/calendar/event?action=TEMPLATE',
+  MAX_STRING = (new Array(512)).join("x")
 
 describe('generate url', function() {
   it('given no parameter, return BASE_URL', function() {
@@ -21,7 +22,6 @@ describe('generate url', function() {
         start: new Date(2014, 10, 10, 12),
         end: new Date(2014, 10, 10, 14)
       }), BASE_URL + '&dates=20141110T030000Z/20141110T050000Z')
-
     })
   })
 
@@ -42,6 +42,12 @@ describe('generate url', function() {
       assert.equal(generateUrl({
         title: ''
       }), BASE_URL)
+    })
+
+    it('as long string, cut off', function() {
+      assert.equal(generateUrl({
+        title: MAX_STRING + 'a'
+      }), BASE_URL + '&text=' + MAX_STRING)
     })
   })
 
@@ -104,6 +110,12 @@ describe('generate url', function() {
       assert.equal(generateUrl({
         location: ''
       }), BASE_URL)
+    })
+
+    it('as long string, cut off', function() {
+      assert.equal(generateUrl({
+        location: MAX_STRING + 'a'
+      }), BASE_URL + '&location=' + MAX_STRING)
     })
   })
 });

@@ -1,13 +1,14 @@
 (function() {
   var moment = typeof module === 'object' ? require('moment') : window.moment,
     BASE_URL = 'http://www.google.com/calendar/event?action=TEMPLATE',
+    MAX_LENGTH = 512,
     toParameter = function(options, propertyName, alternativeName) {
       if (!options[propertyName]) return '';
 
       return '&' +
         (alternativeName || propertyName) +
         '=' +
-        encodeURIComponent(options[propertyName]);
+        encodeURIComponent(options[propertyName].substr(0, MAX_LENGTH - 1));
     },
     toMoment = function(options) {
       return moment(moment(options.date, 'YYYY/MM/DD'));
