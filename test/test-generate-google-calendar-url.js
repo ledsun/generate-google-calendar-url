@@ -9,11 +9,14 @@ describe('generate url', function() {
   })
 
   describe('given multi parameters', function() {
-    it('as title and location, work well', function() {
+    it('as full parameters, work well', function() {
       assert.equal(generateUrl({
         title: 'new event',
-        location: 'somewhere'
-      }), BASE_URL + '&text=new%20event&location=somewhere')
+        location: 'somewhere',
+        start: new Date(2014, 10, 10, 12),
+        end: new Date(2014, 10, 10, 14),
+        details: 'details'
+      }), BASE_URL + '&text=new%20event&location=somewhere&details=details&dates=20141110T030000Z/20141110T050000Z')
     })
 
     it('as date and start and end, prefer start and end', function() {
@@ -93,7 +96,7 @@ describe('generate url', function() {
     })
   })
 
-  describe('given location parameter, encode to url-encode', function() {
+  describe('given location parameter, encode as url-encode', function() {
     it('as multi byte', function() {
       assert.equal(generateUrl({
         location: 'ここではないどこか'
@@ -116,6 +119,32 @@ describe('generate url', function() {
       assert.equal(generateUrl({
         location: MAX_STRING + 'a'
       }), BASE_URL + '&location=' + MAX_STRING)
+    })
+  })
+
+  describe('given details parameter, encode as url-encode', function() {
+    it('as multi byte', function() {
+      assert.equal(generateUrl({
+        details: 'ここではないどこか'
+      }), BASE_URL + '&details=%E3%81%93%E3%81%93%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84%E3%81%A9%E3%81%93%E3%81%8B')
+    })
+
+    it('as url', function() {
+      assert.equal(generateUrl({
+        details: 'http://example.com'
+      }), BASE_URL + '&details=http%3A%2F%2Fexample.com')
+    })
+
+    it('as empty, ignore', function() {
+      assert.equal(generateUrl({
+        details: ''
+      }), BASE_URL)
+    })
+
+    it('as long string, cut off', function() {
+      assert.equal(generateUrl({
+        details: MAX_STRING + 'a'
+      }), BASE_URL + '&details=' + MAX_STRING)
     })
   })
 })

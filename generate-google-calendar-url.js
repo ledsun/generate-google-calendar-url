@@ -41,6 +41,7 @@
       return BASE_URL +
         toStringParameter(options, 'title', 'text') +
         toStringParameter(options, 'location') +
+        toStringParameter(options, 'details') +
         toDatesParameter(options);
     };
 
