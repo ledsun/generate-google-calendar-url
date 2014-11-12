@@ -118,4 +118,4 @@ describe('generate url', function() {
       }), BASE_URL + '&location=' + MAX_STRING)
     })
   })
-});
+})

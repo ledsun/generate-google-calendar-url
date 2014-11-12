@@ -8,8 +8,8 @@ Google Calendarに予定を追加するurlを生成します。
 実行例
 ```js
 generateUrl({
-  start: new Date(2014, 11, 15, 10),
-  end: new Date(2014, 11, 15, 18),
+  start: new Date(2014, 10, 15, 10),
+  end: new Date(2014, 10, 15, 18),
   title: '新しい予定',
   location: 'ここではないどこか',
   details: 'http://event.description.example.com/11234'
