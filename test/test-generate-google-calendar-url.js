@@ -1,4 +1,4 @@
-var assert = require('power-assert'),
+var assert = require('assert'),
   generateUrl = require('../generate-google-calendar-url'),
   BASE_URL = 'http://www.google.com/calendar/event?action=TEMPLATE',
   MAX_STRING = (new Array(512)).join("x")
