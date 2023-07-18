@@ -22,6 +22,7 @@
   "devDependencies": {
     "bower": "^1.7.9",
     "espower-loader": "^1.0.1",
+    "mocha": "^10.2.0",
     "power-assert": "^1.4.1"
   },
   "main": "generate-google-calendar-url.js",
