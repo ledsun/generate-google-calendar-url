@@ -20,13 +20,13 @@
   },
   "homepage": "https://github.com/ledsun/generate-google-calendar-url",
   "devDependencies": {
-    "bower": "^1.7.9",
-    "espower-loader": "^1.0.1",
+    "bower": "^1.8.14",
+    "espower-loader": "^1.2.2",
     "mocha": "^10.2.0",
-    "power-assert": "^1.4.1"
+    "power-assert": "^1.6.1"
   },
   "main": "generate-google-calendar-url.js",
   "dependencies": {
-    "moment": "^2.14.1"
+    "moment": "^2.29.4"
   }
 }
