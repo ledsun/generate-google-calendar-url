@@ -1,6 +1,6 @@
 {
   "name": "generate-google-calendar-url",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Google Calendarに予定を追加するurlを生成します。",
   "scripts": {
     "test": "mocha test/test-generate-google-calendar-url.js"
