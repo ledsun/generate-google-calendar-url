@@ -2,7 +2,6 @@
 
 Google Calendarに予定を追加するurlを生成します。
 
-[![Build Status](https://travis-ci.org/ledsun/generate-google-calendar-url.svg)](https://travis-ci.org/ledsun/generate-google-calendar-url)
 [![npm version](https://badge.fury.io/js/generate-google-calendar-url.svg)](http://badge.fury.io/js/generate-google-calendar-url)
 
 ## Usage
