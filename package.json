@@ -21,10 +21,10 @@
   "homepage": "https://github.com/ledsun/generate-google-calendar-url",
   "devDependencies": {
     "bower": "^1.8.14",
-    "mocha": "^10.2.0"
+    "mocha": "^10.7.3"
   },
   "main": "generate-google-calendar-url.js",
   "dependencies": {
-    "moment": "^2.29.4"
+    "moment": "^2.30.1"
   }
 }
