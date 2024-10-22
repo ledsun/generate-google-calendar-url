@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Set timezone to Tokyo
+        run: sudo timedatectl set-timezone Asia/Tokyo
+
       - name: Install dependencies
         run: npm install
 
