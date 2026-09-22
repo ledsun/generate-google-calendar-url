@@ -1,8 +1,8 @@
 import assert from 'node:assert';
 import generateUrl from '../generate-google-calendar-url.js';
 
-var BASE_URL = 'http://www.google.com/calendar/event?action=TEMPLATE',
-  MAX_STRING = (new Array(512)).join("x")
+const BASE_URL = 'http://www.google.com/calendar/event?action=TEMPLATE';
+const MAX_STRING = (new Array(512)).join("x");
 
 describe('generate url', function() {
   it('given no parameter, return BASE_URL', function() {
