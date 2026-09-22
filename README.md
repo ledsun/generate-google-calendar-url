@@ -43,13 +43,13 @@ generateUrl({
 ### For browser
 インストール
 ```
-bower install git://github.com/ledsun/generate-google-calendar-url.git
+npm install generate-google-calendar-url
 ```
 
-htmlにscriptタグを埋め込みます。
+htmlにscriptタグを埋め込みます。以下は `node_modules` と同じディレクトリにHTMLを置く場合の例です。公開時には必要なJavaScriptファイルを配信先にコピーし、パスを調整してください。
 ```html
-<script src="bower_components/moment/moment.js"></script>
-<script src="bower_components/generate-google-calendar-url/generate-google-calendar-url.js"></script>
+<script src="node_modules/moment/moment.js"></script>
+<script src="node_modules/generate-google-calendar-url/generate-google-calendar-url.js"></script>
 <script>
 console.log(generateUrl({
   start: new Date(2014, 11, 15, 10),
@@ -89,11 +89,4 @@ Node.jsで実行
 ```
 npm install
 npm test
-```
-
-ブラウザで実行
-```
-npm install
-bower install
-open test/index.html
 ```
