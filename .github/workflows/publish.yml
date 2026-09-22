@@ -1,0 +1,39 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Tokyo
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '26'
+          package-manager-cache: false
+
+      - name: Verify tag matches package version
+        run: |
+          node -e 'const v = require("./package.json").version; if (process.env.GITHUB_REF_NAME !== `v${v}`) { console.error("Tag must match package.json version: v" + v); process.exit(1); }'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Publish to npm
+        run: npm publish --access public --registry=https://registry.npmjs.org
