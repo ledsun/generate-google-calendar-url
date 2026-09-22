@@ -23,6 +23,9 @@
     "mocha": "^12.0.2"
   },
   "main": "generate-google-calendar-url.js",
+  "engines": {
+    "node": ">=26"
+  },
   "dependencies": {
     "moment": "^2.31.0"
   }

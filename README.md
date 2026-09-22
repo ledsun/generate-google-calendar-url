@@ -22,6 +22,8 @@ http://www.google.com/calendar/event?action=TEMPLATE&text=%E6%96%B0%E3%81%97%E3%
 ## Setup
 
 ### For Node.js
+Node.js 26以上が必要です。
+
 インストール
 ```
 npm install generate-google-calendar-url
