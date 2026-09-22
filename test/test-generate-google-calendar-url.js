@@ -1,6 +1,7 @@
-var assert = require('assert'),
-  generateUrl = require('../generate-google-calendar-url'),
-  BASE_URL = 'http://www.google.com/calendar/event?action=TEMPLATE',
+import assert from 'node:assert';
+import generateUrl from '../generate-google-calendar-url.js';
+
+var BASE_URL = 'http://www.google.com/calendar/event?action=TEMPLATE',
   MAX_STRING = (new Array(512)).join("x")
 
 describe('generate url', function() {

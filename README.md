@@ -5,7 +5,7 @@ Google Calendarに予定を追加するurlを生成します。
 [![npm version](https://badge.fury.io/js/generate-google-calendar-url.svg)](http://badge.fury.io/js/generate-google-calendar-url)
 
 ## Usage
-実行例
+実行例（読み込み方法は下記 Setup を参照）
 ```js
 generateUrl({
   start: new Date(2014, 10, 15, 10),
@@ -29,9 +29,9 @@ Node.js 26以上が必要です。
 npm install generate-google-calendar-url
 ```
 
-実行例
+実行例（`.mjs` ファイル、または `package.json` に `"type": "module"` を指定したプロジェクトで実行）
 ```js
-var generateUrl = require('generate-google-calendar-url')
+import generateUrl from 'generate-google-calendar-url'
 
 generateUrl({
   start: new Date(2014, 11, 15, 10),
@@ -50,10 +50,11 @@ Temporal を標準搭載したブラウザが必要です。Safari はサポー�
 npm install generate-google-calendar-url
 ```
 
-htmlにscriptタグを埋め込みます。以下は `node_modules` と同じディレクトリにHTMLを置く場合の例です。公開時には必要なJavaScriptファイルを配信先にコピーし、パスを調整してください。
+HTML に `type="module"` の script タグを埋め込みます。以下は `node_modules` と同じディレクトリに HTML を置く場合の例です。HTTP(S) サーバー経由で開いてください。公開時には JavaScript ファイルを配信先にコピーし、パスを調整してください。
 ```html
-<script src="node_modules/generate-google-calendar-url/generate-google-calendar-url.js"></script>
-<script>
+<script type="module">
+import generateUrl from './node_modules/generate-google-calendar-url/generate-google-calendar-url.js';
+
 console.log(generateUrl({
   start: new Date(2014, 11, 15, 10),
   end: new Date(2014, 11, 15, 18),
@@ -63,6 +64,8 @@ console.log(generateUrl({
 }));
 </script>
 ```
+
+このパッケージは ES モジュールの default export として関数を公開します。従来の `require()` による関数の取得や `window.generateUrl` の利用は、上記の `import` に変更してください。
 
 ## Parameters
 終日予定は `date` に `YYYY/MM/DD` 形式の文字列（月・日は1桁も可）を指定します。不正な日付は無視します。時刻付き予定は `start` と `end` に有効な `Date` オブジェクトを指定します。
