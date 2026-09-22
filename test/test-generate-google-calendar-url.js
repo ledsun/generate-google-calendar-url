@@ -66,6 +66,23 @@ describe('generate url', function() {
         date: '2014/11/31'
       }), BASE_URL)
     })
+
+    ;[
+      ['2024/02/29', '20240229/20240301'],
+      ['2023/02/28', '20230228/20230301'],
+      ['2024/12/31', '20241231/20250101'],
+      ['2024/1/9', '20240109/20240110']
+    ].forEach(function(example) {
+      it('advances the all-day end for ' + example[0], function() {
+        assert.equal(generateUrl({ date: example[0] }), BASE_URL + '&dates=' + example[1])
+      })
+    })
+
+    ;['2023/02/29', '2024/13/01', '2024/00/01', '2024/01/00', 'invalid', '2024/01/01extra', {}].forEach(function(date) {
+      it('ignores invalid all-day input ' + JSON.stringify(date), function() {
+        assert.equal(generateUrl({ date: date }), BASE_URL)
+      })
+    })
   })
 
   describe('given start and end parameter, encode to "dates"', function() {
@@ -84,7 +101,7 @@ describe('generate url', function() {
 
     it('as only end, ignore', function() {
       assert.equal(generateUrl({
-        start: new Date
+        end: new Date
       }), BASE_URL)
     })
 
@@ -93,6 +110,18 @@ describe('generate url', function() {
         start: 'a',
         end: {}
       }), BASE_URL)
+    })
+
+    it('converts offsets to UTC and truncates milliseconds', function() {
+      assert.equal(generateUrl({
+        start: new Date('2024-01-01T00:30:45.999+09:00'),
+        end: new Date('2024-01-01T01:30:45.123+09:00')
+      }), BASE_URL + '&dates=20231231T153045Z/20231231T163045Z')
+    })
+
+    it('ignores invalid Date objects', function() {
+      assert.equal(generateUrl({ start: new Date(NaN), end: new Date() }), BASE_URL)
+      assert.equal(generateUrl({ start: new Date(), end: new Date(NaN) }), BASE_URL)
     })
   })
 

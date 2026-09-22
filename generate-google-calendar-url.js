@@ -1,24 +1,33 @@
 (function() {
-  var moment = typeof module === 'object' ? require('moment') : window.moment,
-    BASE_URL = 'http://www.google.com/calendar/event?action=TEMPLATE',
+  var BASE_URL = 'http://www.google.com/calendar/event?action=TEMPLATE',
     MAX_LENGTH = 512,
-    toMoment = function(options) {
-      return moment(moment(options.date, 'YYYY/MM/DD'));
-    },
     toAllDay = function(options) {
-      if (!options.date) return '';
+      if (typeof options.date !== 'string') return '';
 
-      var moment = toMoment(options);
+      var parts = /^(\d{4})\/(\d{1,2})\/(\d{1,2})$/.exec(options.date);
+      if (!parts) return '';
 
-      return moment.isValid() ?
-        '&dates=' + moment.format('YYYYMMDD') + '/' + moment.add(1, 'd').format('YYYYMMDD') :
-        '';
+      try {
+        var date = Temporal.PlainDate.from({
+          year: Number(parts[1]),
+          month: Number(parts[2]),
+          day: Number(parts[3])
+        }, { overflow: 'reject' });
+
+        return '&dates=' + date.toString().replace(/-/g, '') + '/' +
+          date.add({ days: 1 }).toString().replace(/-/g, '');
+      } catch (error) {
+        if (error instanceof RangeError) return '';
+        throw error;
+      }
     },
     toIsoHour = function(date) {
-      return moment(date).utc().format('YYYYMMDDTHHmmss') + 'Z';
+      return Temporal.Instant.fromEpochMilliseconds(date.getTime())
+        .toString({ smallestUnit: 'second' }).replace(/[-:]/g, '');
     },
     toHour = function(options) {
       if (!(options.start instanceof Date) || !(options.end instanceof Date)) return '';
+      if (!Number.isFinite(options.start.getTime()) || !Number.isFinite(options.end.getTime())) return '';
 
       return '&dates=' + toIsoHour(options.start) + '/' + toIsoHour(options.end);
     },

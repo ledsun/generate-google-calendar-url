@@ -43,6 +43,8 @@ generateUrl({
 ```
 
 ### For browser
+Temporal を標準搭載したブラウザが必要です。Safari はサポート対象外です。ポリフィルは同梱しません。
+
 インストール
 ```
 npm install generate-google-calendar-url
@@ -50,7 +52,6 @@ npm install generate-google-calendar-url
 
 htmlにscriptタグを埋め込みます。以下は `node_modules` と同じディレクトリにHTMLを置く場合の例です。公開時には必要なJavaScriptファイルを配信先にコピーし、パスを調整してください。
 ```html
-<script src="node_modules/moment/moment.js"></script>
 <script src="node_modules/generate-google-calendar-url/generate-google-calendar-url.js"></script>
 <script>
 console.log(generateUrl({
@@ -64,6 +65,8 @@ console.log(generateUrl({
 ```
 
 ## Parameters
+終日予定は `date` に `YYYY/MM/DD` 形式の文字列（月・日は1桁も可）を指定します。不正な日付は無視します。時刻付き予定は `start` と `end` に有効な `Date` オブジェクトを指定します。
+
 ### Supported
 - text
 - dates
