@@ -24,6 +24,6 @@
   },
   "main": "generate-google-calendar-url.js",
   "dependencies": {
-    "moment": "^2.30.1"
+    "moment": "^2.31.0"
   }
 }
